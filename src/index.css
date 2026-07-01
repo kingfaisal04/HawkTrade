@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   HawkTrade Design System (TradeZella Style)
+   ============================================ */
+
+:root {
+  --color-hawk-bg: #0B0F19; /* Original requested background */
+  --color-hawk-surface: #111827; /* Dark structured card */
+  --color-hawk-surface-2: #1F2937;
+  --color-hawk-surface-3: #374151;
+  --color-hawk-border: #1F2937; /* Sharp opaque border */
+  --color-hawk-border-2: #374151;
+  
+  --color-hawk-green: #10B981; /* TradeZella-esque premium emerald */
+  --color-hawk-green-light: #34D399;
+  --color-hawk-green-dark: #059669;
+  --color-hawk-green-glow: rgba(16, 185, 129, 0.15);
+  
+  --color-hawk-red: #EF4444;
+  --color-hawk-red-light: #F87171;
+  --color-hawk-amber: #F59E0B;
+  --color-hawk-blue: #3B82F6;
+  --color-hawk-purple: #8B5CF6;
+  
+  --color-hawk-text: #FFFFFF;
+  --color-hawk-text-secondary: #9CA3AF;
+  --color-hawk-text-muted: #6B7280;
+
+  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --animate-fade-in: fadeIn 0.4s ease-out;
+  --animate-slide-up: slideUp 0.4s ease-out;
+  --animate-scale-in: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-hawk-bg);
+  color: var(--color-hawk-text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-hawk-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-hawk-surface-3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hawk-text-muted);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes drawLine {
+  from { stroke-dashoffset: 3000; }
+  to { stroke-dashoffset: 0; }
+}
+
+.animate-draw-line {
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  animation: drawLine 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.02); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+/* ============================================
+   Utility Classes (Structured & Solid)
+   ============================================ */
+
+/* Replaced .glass with structured flat cards */
+.glass {
+  background: var(--color-hawk-surface);
+  border: 1px solid var(--color-hawk-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.glass-strong {
+  background: #151C2C; /* Slightly distinct solid dark */
+  border: 1px solid var(--color-hawk-border-2);
+}
+
+.card-hover {
+  transition: all 0.2s ease-in-out;
+}
+.card-hover:hover {
+  border-color: var(--color-hawk-green);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo styling */
+.hawk-logo {
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.hawk-logo-icon {
+  color: var(--color-hawk-green);
+}
+
+.gradient-text {
+  color: var(--color-hawk-green);
+}
+
+.btn-primary {
+  background: var(--color-hawk-green);
+  color: #000000;
+  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+}
+.btn-primary:hover {
+  background: var(--color-hawk-green-light);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--color-hawk-surface-2);
+  color: var(--color-hawk-text);
+  font-weight: 500;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-hawk-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+}
+.btn-secondary:hover {
+  background: var(--color-hawk-surface-3);
+  border-color: var(--color-hawk-border-2);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-hawk-text-secondary);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+}
+.btn-ghost:hover {
+  color: var(--color-hawk-text);
+  background: var(--color-hawk-surface-2);
+}
+
+.input-field {
+  background: var(--color-hawk-surface-2);
+  border: 1px solid var(--color-hawk-border);
+  border-radius: 0.375rem;
+  padding: 0.625rem 1rem;
+  color: var(--color-hawk-text);
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  outline: none;
+  width: 100%;
+}
+.input-field:focus {
+  border-color: var(--color-hawk-green);
+}
+.input-field::placeholder {
+  color: var(--color-hawk-text-muted);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-green {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-hawk-green);
+}
+.badge-red {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-hawk-red-light);
+}
+.badge-amber {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-hawk-amber);
+}
+.badge-blue {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--color-hawk-blue);
+}
+.badge-purple {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--color-hawk-purple);
+}
+
+/* Responsive container */
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0 1rem;
+  }
+}
