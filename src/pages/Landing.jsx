@@ -70,7 +70,7 @@ export default function Landing() {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/journal" className="w-full sm:w-auto">
                 <button className="btn-primary flex items-center justify-center gap-2 py-4 px-8 text-lg w-full shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.5)]">
-                  Start Journaling Free
+                  Get Started
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </Link>

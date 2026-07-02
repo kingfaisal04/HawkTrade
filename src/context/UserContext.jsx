@@ -5,13 +5,37 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   // Mock state: false = Free Tier, true = Pro Tier
   const [isPro, setIsPro] = useState(false);
+  
+  // Mock Auth State
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
+  const [experienceLevel, setExperienceLevel] = useState(null);
 
   const togglePro = () => {
     setIsPro((prev) => !prev);
   };
+  
+  const login = () => {
+    setIsAuthenticated(true);
+  };
+
+  const logout = () => {
+    setIsAuthenticated(false);
+    setHasCompletedOnboarding(false);
+    setExperienceLevel(null);
+  };
+
+  const completeOnboarding = (level) => {
+    setExperienceLevel(level);
+    setHasCompletedOnboarding(true);
+  };
 
   return (
-    <UserContext.Provider value={{ isPro, togglePro }}>
+    <UserContext.Provider value={{ 
+      isPro, togglePro, 
+      isAuthenticated, login, logout,
+      hasCompletedOnboarding, experienceLevel, completeOnboarding
+    }}>
       {children}
     </UserContext.Provider>
   );

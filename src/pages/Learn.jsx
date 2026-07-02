@@ -308,7 +308,7 @@ export default function Learn() {
                     </h2>
                     <p className="text-sm text-hawk-text-secondary mt-1">Join specialized trading groups and learn together.</p>
                   </div>
-                  <button className="text-sm font-bold text-hawk-blue hover:text-white transition-colors flex items-center">
+                  <button onClick={() => navigate('/communities')} className="text-sm font-bold text-hawk-blue hover:text-white transition-colors flex items-center">
                     View All Communities <ChevronRight className="w-4 h-4 ml-1" />
                   </button>
                 </div>

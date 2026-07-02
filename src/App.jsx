@@ -9,11 +9,14 @@ import Backtest from './pages/Backtest'
 import Pricing from './pages/Pricing'
 import PropFirm from './pages/PropFirm'
 import Features from './pages/Features'
+import Communities from './pages/Communities'
+import OnboardingModal from './components/ui/OnboardingModal'
 
 function App() {
   return (
     <div className="min-h-screen bg-hawk-bg text-hawk-text font-sans">
       <Navbar />
+      <OnboardingModal />
       <main className="pt-24">
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -24,6 +27,7 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/prop-firm" element={<PropFirm />} />
           <Route path="/features" element={<Features />} />
+          <Route path="/communities" element={<Communities />} />
         </Routes>
       </main>
       <Footer />

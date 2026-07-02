@@ -229,6 +229,94 @@ export default function PropFirm() {
           )
         })}
       </div>
+      {/* ─── AI Readiness Assessment (New Funding Feature) ─── */}
+      <div className="flex items-center justify-between mb-4 relative z-10 mt-12">
+        <h2 className="text-xl font-bold text-white flex items-center gap-2"><Target className="w-5 h-5 text-hawk-green" /> AI Readiness Assessment</h2>
+      </div>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative z-10 mb-12">
+        {/* Readiness Gauge */}
+        <div className="glass rounded-xl border border-hawk-border p-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
+           <div className="absolute top-0 left-0 w-full h-1 bg-hawk-green"></div>
+           <div className="w-32 h-32 rounded-full border-8 border-hawk-surface-2 flex items-center justify-center relative mb-4">
+             <svg className="absolute inset-0 w-full h-full -rotate-90">
+               <circle cx="64" cy="64" r="56" fill="none" stroke="currentColor" strokeWidth="8" className="text-hawk-surface-3" />
+               <circle cx="64" cy="64" r="56" fill="none" stroke="currentColor" strokeWidth="8" strokeDasharray="351.85" strokeDashoffset={351.85 * (1 - 0.85)} className="text-hawk-green drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" strokeLinecap="round" />
+             </svg>
+             <div className="flex flex-col">
+               <span className="text-3xl font-bold text-white">85%</span>
+             </div>
+           </div>
+           <h3 className="font-bold text-white text-lg">Ready for $100k</h3>
+           <p className="text-sm text-hawk-text-secondary mt-2">Your recent journal metrics indicate you have a high probability of passing a $100k evaluation.</p>
+        </div>
+        
+        {/* Requirement Tracker */}
+        <div className="lg:col-span-2 glass rounded-xl border border-hawk-border p-6 flex flex-col justify-center">
+          <h3 className="font-bold text-white mb-4">Challenge Requirements Checklist</h3>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-5 h-5 text-hawk-green" />
+                <span className="text-sm font-medium text-white">Profit Factor {'>'} 1.5</span>
+              </div>
+              <span className="text-sm font-bold text-hawk-text-secondary">Current: <span className="text-hawk-green">1.8</span></span>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded-full border-2 border-hawk-border flex items-center justify-center" />
+                <span className="text-sm font-medium text-white">30 Days Consistent Trading</span>
+              </div>
+              <span className="text-sm font-bold text-hawk-text-secondary">Current: <span className="text-hawk-amber">14 days</span></span>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-5 h-5 text-hawk-green" />
+                <span className="text-sm font-medium text-white">Max Drawdown {'<'} 5%</span>
+              </div>
+              <span className="text-sm font-bold text-hawk-text-secondary">Current: <span className="text-hawk-green">2.1%</span></span>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-5 h-5 text-hawk-green" />
+                <span className="text-sm font-medium text-white">Win Rate {'>'} 50%</span>
+              </div>
+              <span className="text-sm font-bold text-hawk-text-secondary">Current: <span className="text-hawk-green">60%</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* ─── Partner Firms (New Funding Feature) ─── */}
+      <div className="flex items-center justify-between mb-4 relative z-10 mt-12">
+        <h2 className="text-xl font-bold text-white flex items-center gap-2"><Building2 className="w-5 h-5 text-hawk-blue" /> Partner Firms</h2>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+        {[
+          { name: 'FTMO', size: '$100k', price: '$540', split: '80/20', active: true },
+          { name: 'Topstep', size: '$50k', price: '$49/mo', split: '90/10', active: false },
+          { name: 'FundingPips', size: '$100k', price: '$399', split: '80/20', active: false }
+        ].map((firm, i) => (
+          <div key={i} className="glass rounded-xl border border-hawk-border p-6 flex flex-col hover:border-hawk-blue/30 transition-colors">
+            <h3 className="font-bold text-lg text-white mb-1">{firm.name}</h3>
+            <p className="text-sm text-hawk-text-secondary mb-4">{firm.size} Evaluation</p>
+            <div className="space-y-2 mb-6 flex-1">
+              <div className="flex justify-between text-sm">
+                <span className="text-hawk-text-muted">Fee</span>
+                <span className="font-bold text-white">{firm.price}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-hawk-text-muted">Payout Split</span>
+                <span className="font-bold text-white">{firm.split}</span>
+              </div>
+            </div>
+            <button className={`w-full py-2 rounded-lg font-bold text-sm transition-colors ${firm.active ? 'btn-primary' : 'bg-hawk-surface-2 text-white hover:bg-hawk-surface-3 border border-hawk-border'}`}>
+              {firm.active ? 'Start Challenge' : 'View Details'}
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
