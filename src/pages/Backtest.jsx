@@ -3,7 +3,7 @@ import {
   Play, Code2, Terminal, Activity, TrendingUp, AlertTriangle, 
   Cpu, RotateCcw, Hand, Sparkles, FastForward, CheckCircle2, ChevronRight,
   BarChart3, Crosshair, ShieldAlert, History, Brain, Settings, Maximize2, LayoutDashboard,
-  ArrowLeft, Plus, LineChart, Wallet, Target, ArrowRight
+  ArrowLeft, Plus, LineChart, Wallet, Target, ArrowRight, X
 } from 'lucide-react'
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer 
@@ -101,6 +101,7 @@ export default function Backtest() {
   
   // Manual States
   const [manualTrades, setManualTrades] = useState(14)
+  const [showMobileExecution, setShowMobileExecution] = useState(false)
   const maxManualFree = 30
 
   const runAiBuilder = () => {
@@ -434,10 +435,10 @@ export default function Backtest() {
             VIEW 2: MANUAL SIMULATOR
             ========================================== */}
         {activeView === 'manual' && (
-          <div className="flex flex-col lg:flex-row w-full h-full animate-fade-in relative">
+          <div className="flex w-full h-full animate-fade-in relative overflow-hidden">
             
             {/* MAIN CHART AREA */}
-            <div className="flex-1 relative border-r border-hawk-border order-2 lg:order-1 h-[50vh] lg:h-full">
+            <div className="flex-1 relative border-r border-hawk-border h-full">
               {!isPro && manualTrades >= maxManualFree && (
                 <div className="absolute inset-0 z-50 flex flex-col items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
                   <div className="relative z-10 bg-hawk-surface border border-hawk-border-2 rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl">
@@ -457,10 +458,29 @@ export default function Backtest() {
                    height="100%"
                 />
               </div>
+
+              {/* Floating Mobile Execution Toggle */}
+              <button 
+                onClick={() => setShowMobileExecution(true)}
+                className="lg:hidden absolute bottom-6 right-6 z-40 bg-hawk-green text-black px-5 py-3.5 rounded-full font-bold shadow-[0_0_30px_rgba(16,185,129,0.3)] flex items-center gap-2 transition-transform hover:scale-105"
+              >
+                <Crosshair className="w-5 h-5" /> Execute
+              </button>
             </div>
 
             {/* RIGHT SIDEBAR: Execution */}
-            <div className="w-full lg:w-[340px] bg-hawk-bg flex flex-col shrink-0 order-1 lg:order-2 h-[50vh] lg:h-full border-b lg:border-b-0 border-hawk-border">
+            <div className={`
+              absolute lg:relative right-0 top-0 h-full w-full sm:w-[380px] lg:w-[340px] bg-hawk-bg flex flex-col shrink-0 border-l border-hawk-border z-50 transition-transform duration-300
+              ${showMobileExecution ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}
+            `}>
+               {/* Mobile Sidebar Header */}
+               <div className="flex lg:hidden items-center justify-between p-4 border-b border-hawk-border bg-hawk-surface">
+                  <span className="font-bold text-white flex items-center gap-2"><Crosshair className="w-4 h-4 text-hawk-green" /> Trade Execution</span>
+                  <button onClick={() => setShowMobileExecution(false)} className="p-2 hover:bg-hawk-surface-2 rounded-lg text-hawk-text-secondary hover:text-white transition-colors">
+                    <X className="w-5 h-5" />
+                  </button>
+               </div>
+
                <div className="flex border-b border-hawk-border shrink-0 px-2 pt-2">
                  <button 
                    className={`flex-1 pb-3 text-xs font-bold border-b-2 transition-colors ${sidebarTab === 'execution' ? 'border-hawk-blue text-white' : 'border-transparent text-hawk-text-secondary hover:text-white'}`} 

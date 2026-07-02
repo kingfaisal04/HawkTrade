@@ -6,9 +6,11 @@ import {
   Check, ShieldCheck, Sparkles, Lock, ShieldAlert
 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { useUser } from '../context/UserContext'
 
 export default function Landing() {
   const [annual, setAnnual] = useState(false)
+  const { isAuthenticated, login } = useUser()
 
   return (
     <div className="overflow-hidden">
@@ -68,12 +70,19 @@ export default function Landing() {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/journal" className="w-full sm:w-auto">
-                <button className="btn-primary flex items-center justify-center gap-2 py-4 px-8 text-lg w-full shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.5)]">
+              {isAuthenticated ? (
+                <Link to="/journal" className="w-full sm:w-auto">
+                  <button className="btn-primary flex items-center justify-center gap-2 py-4 px-8 text-lg w-full shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.5)]">
+                    Go to Dashboard
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </Link>
+              ) : (
+                <button onClick={login} className="w-full sm:w-auto btn-primary flex items-center justify-center gap-2 py-4 px-8 text-lg shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.5)]">
                   Get Started
                   <ArrowRight className="w-5 h-5" />
                 </button>
-              </Link>
+              )}
             </div>
 
             {/* Social Proof snippet in hero */}
@@ -546,11 +555,17 @@ export default function Landing() {
                 Stop jumping between spreadsheets and random YouTube videos. Get the all-in-one ecosystem for serious traders.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link to="/journal" className="w-full sm:w-auto">
-                  <button className="btn-primary flex items-center justify-center gap-2 py-4 px-8 text-lg w-full sm:w-auto shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                {isAuthenticated ? (
+                  <Link to="/journal" className="w-full sm:w-auto">
+                    <button className="btn-primary flex items-center justify-center gap-2 py-4 px-8 text-lg w-full sm:w-auto shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                      Go to Dashboard <ArrowRight className="w-5 h-5" />
+                    </button>
+                  </Link>
+                ) : (
+                  <button onClick={login} className="w-full sm:w-auto btn-primary flex items-center justify-center gap-2 py-4 px-8 text-lg shadow-[0_0_30px_rgba(16,185,129,0.3)]">
                     Create Free Account <ArrowRight className="w-5 h-5" />
                   </button>
-                </Link>
+                )}
               </div>
               
               {/* Security Trust Badges */}
