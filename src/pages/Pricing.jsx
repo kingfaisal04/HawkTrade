@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Check, ShieldCheck, Zap, Sparkles } from 'lucide-react'
 import { useUser } from '../context/UserContext'
 
@@ -74,9 +75,9 @@ const Pricing = () => {
             ))}
           </div>
           <div className="mt-8 pt-4 border-t border-hawk-border/20 text-center">
-            <a href="/features" className="text-sm font-medium text-hawk-text-secondary hover:text-white transition-colors inline-flex items-center gap-1">
+            <Link to="/features" className="text-sm font-medium text-hawk-text-secondary hover:text-white transition-colors inline-flex items-center gap-1">
               See all features <span aria-hidden="true">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -125,9 +126,9 @@ const Pricing = () => {
             ))}
           </div>
           <div className="mt-8 pt-4 border-t border-hawk-green/20 text-center">
-            <a href="/features" className="text-sm font-bold text-hawk-green hover:text-hawk-green-light transition-colors inline-flex items-center gap-1">
+            <Link to="/features" className="text-sm font-bold text-hawk-green hover:text-hawk-green-light transition-colors inline-flex items-center gap-1">
               See all features <span aria-hidden="true">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -169,9 +170,9 @@ const Pricing = () => {
             ))}
           </div>
           <div className="mt-8 pt-4 border-t border-hawk-purple/20 text-center">
-            <a href="/features" className="text-sm font-bold text-hawk-purple hover:text-white transition-colors inline-flex items-center gap-1">
+            <Link to="/features" className="text-sm font-bold text-hawk-purple hover:text-white transition-colors inline-flex items-center gap-1">
               See all features <span aria-hidden="true">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </div>
 

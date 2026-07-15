@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Activity, AreaChart, Bot, BrainCircuit, Crosshair, FolderSync, LineChart, Link2, Play, Repeat, Shield, Sparkles, Target, Users } from 'lucide-react'
 
 const features = [
@@ -105,9 +106,9 @@ const Features = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-hawk-green/10 via-transparent to-hawk-purple/10" />
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 relative z-10">Ready to level up your trading?</h2>
           <p className="text-hawk-text-secondary mb-8 text-lg relative z-10">Join thousands of traders who have found their edge with HawkTrade.</p>
-          <a href="/pricing" className="btn-primary py-4 px-8 text-lg font-bold shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transition-all relative z-10 inline-flex items-center gap-2">
+          <Link to="/pricing" className="btn-primary py-4 px-8 text-lg font-bold shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transition-all relative z-10 inline-flex items-center gap-2">
             View Pricing <Sparkles className="w-5 h-5" />
-          </a>
+          </Link>
         </div>
       </div>
 
