@@ -38,7 +38,7 @@ export default function Navbar() {
     >
       <nav className="page-container flex justify-between items-center py-2">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center gap-2 group"> 
           <div className="w-8 h-8 rounded bg-hawk-green flex items-center justify-center">
             <TrendingUp className="w-5 h-5 text-black" />
           </div>
