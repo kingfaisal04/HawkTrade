@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Landing from './pages/Landing'
@@ -14,12 +14,15 @@ import OnboardingModal from './components/ui/OnboardingModal'
 import ScrollToTop from './components/layout/ScrollToTop'
 
 function App() {
+  const location = useLocation()
+  const isLanding = location.pathname === '/'
+
   return (
     <div className="min-h-screen bg-hawk-bg text-hawk-text font-sans">
       <ScrollToTop />
       <Navbar />
       <OnboardingModal />
-      <main className="pt-24">
+      <main className={isLanding ? "" : "pt-24"}>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/markets" element={<Markets />} />
